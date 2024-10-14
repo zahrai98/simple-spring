@@ -4,7 +4,7 @@ import com.example.sample.user.model.ProfileEntity;
 import com.example.sample.user.model.UserEntity;
 import com.example.sample.user.model.dto.ProfileIn;
 import com.example.sample.user.model.dto.ProfileInEdit;
-import com.example.sample.user.model.dto.ProfileInQuery;
+import com.example.sample.user.model.dto.ProfileFilter;
 import com.example.sample.user.model.dto.ProfileOut;
 import com.example.sample.user.repository.ProfileRepository;
 import com.example.sample.user.repository.ProfileSpecification;
@@ -28,9 +28,9 @@ public class ProfileService {
         this.userRepository = userRepository;
     }
 
-    public List<ProfileOut> getAll(ProfileInQuery profileInQuery) {
+    public List<ProfileOut> getAll(ProfileFilter profileFilter) {
         return profileRepository.findAll(
-                Specification.where(ProfileSpecification.search(profileInQuery))
+                Specification.where(ProfileSpecification.search(profileFilter))
         ).stream().map(ProfileOut::new).toList();
     }
 

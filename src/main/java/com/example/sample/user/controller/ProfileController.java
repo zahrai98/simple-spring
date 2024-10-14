@@ -2,7 +2,7 @@ package com.example.sample.user.controller;
 
 import com.example.sample.user.model.dto.ProfileIn;
 import com.example.sample.user.model.dto.ProfileInEdit;
-import com.example.sample.user.model.dto.ProfileInQuery;
+import com.example.sample.user.model.dto.ProfileFilter;
 import com.example.sample.user.model.dto.ProfileOut;
 import com.example.sample.user.service.ProfileService;
 import jakarta.validation.Valid;
@@ -22,8 +22,8 @@ public class ProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProfileOut>> getAll(@ModelAttribute ProfileInQuery profileInQuery) {
-        return new ResponseEntity<>(profileService.getAll(profileInQuery), HttpStatus.OK);
+    public ResponseEntity<List<ProfileOut>> getAll(@ModelAttribute ProfileFilter profileFilter) {
+        return new ResponseEntity<>(profileService.getAll(profileFilter), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

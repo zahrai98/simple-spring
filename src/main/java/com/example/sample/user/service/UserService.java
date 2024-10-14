@@ -20,9 +20,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserOut> getAll(UserInQuery userInQuery) {
+    public List<UserOut> getAll(UserFilter userFilter) {
         return userRepository.findAll(
-                Specification.where(UserSpecification.search(userInQuery))
+                Specification.where(UserSpecification.search(userFilter))
         ).stream().map(UserOut::new).toList();
     }
 

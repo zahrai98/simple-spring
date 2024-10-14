@@ -3,7 +3,7 @@ package com.example.sample.todo.service;
 import com.example.sample.todo.model.TodoEntity;
 import com.example.sample.todo.model.dto.TodoIn;
 import com.example.sample.todo.model.dto.TodoInEdit;
-import com.example.sample.todo.model.dto.TodoInQuery;
+import com.example.sample.todo.model.dto.TodoFilter;
 import com.example.sample.todo.model.dto.TodoOut;
 import com.example.sample.todo.repository.TodoRepository;
 import com.example.sample.todo.repository.TodoSpecifications;
@@ -15,7 +15,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,9 +27,9 @@ public class TodoService {
         this.userRepository = userRepository;
     }
 
-    public List<TodoOut> getAll(TodoInQuery todoInQuery) {
+    public List<TodoOut> getAll(TodoFilter todoFilter) {
         return todoRepository.findAll(Specification.where(
-                TodoSpecifications.search(todoInQuery))).stream().map(TodoOut::new).toList();
+                TodoSpecifications.search(todoFilter))).stream().map(TodoOut::new).toList();
     }
 
     public TodoOut getById(Long id) {

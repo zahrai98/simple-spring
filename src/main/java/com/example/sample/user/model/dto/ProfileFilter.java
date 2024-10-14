@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInQuery {
+public class ProfileFilter {
     private Long id;
-    private String username;
+    private String bio;
+    private String  username;
 }

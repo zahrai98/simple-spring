@@ -2,7 +2,7 @@ package com.example.sample.todo.controller;
 
 import com.example.sample.todo.model.dto.TodoIn;
 import com.example.sample.todo.model.dto.TodoInEdit;
-import com.example.sample.todo.model.dto.TodoInQuery;
+import com.example.sample.todo.model.dto.TodoFilter;
 import com.example.sample.todo.model.dto.TodoOut;
 import com.example.sample.todo.service.TodoService;
 import jakarta.validation.Valid;
@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -23,8 +22,8 @@ public class TodoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TodoOut>> getAll(@ModelAttribute TodoInQuery todoInQuery) {
-        return new ResponseEntity<>(todoService.getAll(todoInQuery), HttpStatus.OK);
+    public ResponseEntity<List<TodoOut>> getAll(TodoFilter todoFilter) {
+        return new ResponseEntity<>(todoService.getAll(todoFilter), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

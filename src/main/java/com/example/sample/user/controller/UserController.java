@@ -19,8 +19,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserOut>> getAll(@ModelAttribute UserInQuery userInQuery) {
-        return new ResponseEntity<>(userService.getAll(userInQuery), HttpStatus.OK);
+    public ResponseEntity<List<UserOut>> getAll(@ModelAttribute UserFilter userFilter) {
+        return new ResponseEntity<>(userService.getAll(userFilter), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
